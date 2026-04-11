@@ -27,7 +27,8 @@ An application for the 2026 Spring App Development Program / Milestone 1 - 4
 | 9  | As a user, I want the system to organize financial data so that budgeting becomes easier      | Low      | James    | Not Started |
 | 10 | As a user, I want a structured backend system so that the application can scale in the future | Low      | Marcus        | Not Started |
 
-##Selected Stories
+
+## Selected Stories
 
 
 | ID | User Story                            | Assigned To | Status      |
