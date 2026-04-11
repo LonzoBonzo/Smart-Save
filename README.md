@@ -50,13 +50,16 @@ An application for the 2026 Spring App Development Program / Milestone 1 - 4
 
 # AI Usage 
 
-Tools Used:
+## Tools Used:
+
 * ChatGPT
 
-Purpose:
+## Purpose:
+
 Helped Generate Structures and assist with debugging repository design
 
-How Output was modified/validated:
+## How Output was modified/validated:
+
 *Tested code in VS Code.
 *Reviewed repository design and adjusted lines 1-8 for each model level.
 *Verified Spring Boot structure.
