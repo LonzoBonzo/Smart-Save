@@ -60,7 +60,7 @@ Helped Generate Structures and assist with debugging repository design
 
 ## How Output was modified/validated:
 
-*Tested code in VS Code.
-*Reviewed repository design and adjusted lines 1-8 for each model level.
-*Verified Spring Boot structure.
+* Tested code in VS Code.
+* Reviewed repository design and adjusted lines 1-8 for each model level.
+* Verified Spring Boot structure.
 
