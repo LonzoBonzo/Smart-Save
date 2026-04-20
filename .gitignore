@@ -1,0 +1,6 @@
+SMARTSAVE/smartsave-frontend/node_modules/
+SMARTSAVE/smartsave-frontend/dist/
+SMARTSAVE/smartsave-backend/target/
+SMARTSAVE/smartsave-backend/data/
+*.log
+.DS_Store
