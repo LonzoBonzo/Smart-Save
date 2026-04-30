@@ -1,6 +1,6 @@
 # Smart-Save
 
-Smart Save is a full-stack personal finance tracker built for the 2026 Spring App Development Program. This milestone now includes a React frontend, a Spring Boot backend, persistent database storage, session-based authentication with Spring Security, and public API integration for exchange-rate snapshots.
+Smart Save is a full-stack personal finance tracker built for the 2026 Spring App Development Program. This project is nearing completion and now includes a React frontend, a Spring Boot backend, persistent database storage, session-based authentication with Spring Security, and public API integration for exchange-rate snapshots. Purpose of the project is to help students and those alike keep track of their finaces, spending and savings in order to keep up to date with their needs and personal benefits.
 
 ## Stack
 
