@@ -210,3 +210,6 @@ ExchangeRateSnapshot
 - Validated frontend-to-backend communication by testing API calls from React components (GET/POST requests working as expected).
 - Fixed routing and response handling issues during testing to ensure consistent JSON responses across all controllers.
 - Verified database persistence using H2 file storage for users, transactions, goals, and exchange-rate snapshots.
+
+
+Video Link: https://youtu.be/jgCIgCk91r8
