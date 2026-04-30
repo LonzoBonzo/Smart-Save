@@ -3,14 +3,19 @@ const defaultHeaders = {
 };
 
 async function request(path, options = {}) {
-  const response = await fetch(path, {
-    credentials: "include",
-    headers: {
-      ...defaultHeaders,
-      ...(options.headers || {}),
-    },
-    ...options,
-  });
+  let response;
+  try {
+    response = await fetch(path, {
+      credentials: "include",
+      headers: {
+        ...defaultHeaders,
+        ...(options.headers || {}),
+      },
+      ...options,
+    });
+  } catch {
+    throw new Error("Backend is not reachable. Make sure Spring Boot is running on port 8080.");
+  }
 
   const contentType = response.headers.get("content-type") || "";
   const payload = contentType.includes("application/json")
@@ -21,7 +26,7 @@ async function request(path, options = {}) {
     const message =
       typeof payload === "object" && payload !== null
         ? payload.message || "Request failed"
-        : "Request failed";
+        : payload || "Request failed";
     throw new Error(message);
   }
 

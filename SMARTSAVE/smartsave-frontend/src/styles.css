@@ -106,6 +106,35 @@ select {
   font-size: 1.5rem;
 }
 
+.login-thanks {
+  position: fixed;
+  inset: 0;
+  z-index: 20;
+  display: grid;
+  place-items: center;
+  background: rgba(249, 247, 241, 0.92);
+  color: #112031;
+  font-size: clamp(2rem, 6vw, 4.5rem);
+  font-weight: 700;
+  text-align: center;
+  animation: login-thanks-fade 2.2s ease forwards;
+}
+
+@keyframes login-thanks-fade {
+  0% {
+    opacity: 1;
+  }
+
+  62% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
 .section-heading {
   display: flex;
   align-items: center;

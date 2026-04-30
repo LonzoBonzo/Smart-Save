@@ -8,14 +8,16 @@ import { FormPage } from "./pages/FormPage";
 import { LoginPage } from "./pages/LoginPage";
 import { RegisterPage } from "./pages/RegisterPage";
 
-const guestDashboard = {
-  userName: "Guest Saver",
-  goalsCount: 3,
-  transactionsCount: 5,
-  totalSaved: "1280.00",
-  totalIncome: "2150.00",
-  totalExpenses: "870.00",
+const zeroDashboard = {
+  userName: "Demo Saver",
+  goalsCount: 0,
+  transactionsCount: 0,
+  totalSaved: "0.00",
+  totalIncome: "0.00",
+  totalExpenses: "0.00",
 };
+
+const guestDashboard = { ...zeroDashboard, userName: "Guest Saver" };
 
 const guestData = {
   goals: [
@@ -47,6 +49,7 @@ const initialState = {
   loading: false,
   error: "",
   formMessage: "",
+  loginNotice: false,
 };
 
 function reducer(state, action) {
@@ -71,6 +74,8 @@ function reducer(state, action) {
       };
     case "SET_FORM_MESSAGE":
       return { ...state, formMessage: action.payload };
+    case "SET_LOGIN_NOTICE":
+      return { ...state, loginNotice: action.payload };
     default:
       return state;
   }
@@ -95,16 +100,18 @@ export default function App() {
       dispatch({ type: "SET_DASHBOARD", payload: guestDashboard });
       return;
     }
-    dispatch({ type: "SET_LOADING", payload: true });
-    try {
-      const dashboard = await api.getDashboard();
-      dispatch({ type: "SET_DASHBOARD", payload: dashboard });
-    } catch (error) {
-      dispatch({ type: "SET_ERROR", payload: error.message });
-    } finally {
-      dispatch({ type: "SET_LOADING", payload: false });
-    }
+    dispatch({ type: "SET_DASHBOARD", payload: zeroDashboard });
   }, [state.user]);
+
+  useEffect(() => {
+    if (!state.loginNotice) {
+      return undefined;
+    }
+    const timerId = window.setTimeout(() => {
+      dispatch({ type: "SET_LOGIN_NOTICE", payload: false });
+    }, 2200);
+    return () => window.clearTimeout(timerId);
+  }, [state.loginNotice]);
 
   const loadData = useCallback(async () => {
     if (!state.user) {
@@ -149,6 +156,8 @@ export default function App() {
   async function handleLogin(form) {
     const response = await api.login(form);
     dispatch({ type: "SET_USER", payload: response.user });
+    dispatch({ type: "SET_DASHBOARD", payload: zeroDashboard });
+    dispatch({ type: "SET_LOGIN_NOTICE", payload: true });
     dispatch({ type: "SET_ERROR", payload: "" });
   }
 
@@ -201,6 +210,7 @@ export default function App() {
               loading={state.loading}
               loadDashboard={loadDashboard}
               isGuest={!state.user}
+              showLoginNotice={state.loginNotice}
             />
           }
         />

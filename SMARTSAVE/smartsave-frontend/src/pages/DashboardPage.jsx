@@ -1,12 +1,18 @@
 import { useEffect } from "react";
 
-export function DashboardPage({ dashboard, loading, loadDashboard, isGuest }) {
+export function DashboardPage({ dashboard, loading, loadDashboard, isGuest, showLoginNotice }) {
   useEffect(() => {
     loadDashboard();
   }, [loadDashboard]);
 
   return (
     <section className="page-grid">
+      {showLoginNotice && (
+        <div className="login-thanks" role="status" aria-live="polite">
+          Thank you for logging in
+        </div>
+      )}
+
       <div className="hero-card">
         <p className="eyebrow">Overview</p>
         <h1>Build safer habits with one secure dashboard.</h1>

@@ -5,15 +5,19 @@ export function LoginPage({ onLogin }) {
   const navigate = useNavigate();
   const [form, setForm] = useState({ email: "demo@smartsave.app", password: "Password123" });
   const [error, setError] = useState("");
+  const [submitting, setSubmitting] = useState(false);
 
   async function handleSubmit(event) {
     event.preventDefault();
     try {
       setError("");
+      setSubmitting(true);
       await onLogin(form);
       navigate("/");
     } catch (err) {
       setError(err.message);
+    } finally {
+      setSubmitting(false);
     }
   }
 
@@ -37,8 +41,8 @@ export function LoginPage({ onLogin }) {
           required
         />
         {error && <p className="error-text">{error}</p>}
-        <button className="primary-button" type="submit">
-          Login
+        <button className="primary-button" type="submit" disabled={submitting}>
+          {submitting ? "Logging in..." : "Login"}
         </button>
         <p className="status-text">
           Need an account? <Link to="/register">Register here</Link>
