@@ -201,3 +201,10 @@ ExchangeRateSnapshot
 - The milestone requested React specifically, so the frontend was implemented in React rather than Angular.
 - The backend now uses persistent H2 storage instead of temporary lists.
 - Session auth was chosen because the rubric allows JWT or session-based authorization.
+- Implemented and tested backend `TestControllers` to validate API endpoints and ensure proper request/response flow across the application.
+- Verified all core REST endpoints for authentication, dashboard data, transactions, goals, and external exchange-rate functionality using test requests.
+- Confirmed proper integration between Spring Boot controllers, service layer, and JPA repositories.
+- Ensured all endpoints correctly enforce Spring Security session-based authentication where required.
+- Validated frontend-to-backend communication by testing API calls from React components (GET/POST requests working as expected).
+- Fixed routing and response handling issues during testing to ensure consistent JSON responses across all controllers.
+- Verified database persistence using H2 file storage for users, transactions, goals, and exchange-rate snapshots.
