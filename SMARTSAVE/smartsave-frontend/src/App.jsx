@@ -100,7 +100,16 @@ export default function App() {
       dispatch({ type: "SET_DASHBOARD", payload: guestDashboard });
       return;
     }
-    dispatch({ type: "SET_DASHBOARD", payload: zeroDashboard });
+    dispatch({ type: "SET_LOADING", payload: true });
+    dispatch({ type: "SET_ERROR", payload: "" });
+    try {
+      const dashboard = await api.getDashboard();
+      dispatch({ type: "SET_DASHBOARD", payload: dashboard });
+    } catch (error) {
+      dispatch({ type: "SET_ERROR", payload: error.message });
+    } finally {
+      dispatch({ type: "SET_LOADING", payload: false });
+    }
   }, [state.user]);
 
   useEffect(() => {
@@ -156,7 +165,7 @@ export default function App() {
   async function handleLogin(form) {
     const response = await api.login(form);
     dispatch({ type: "SET_USER", payload: response.user });
-    dispatch({ type: "SET_DASHBOARD", payload: zeroDashboard });
+    dispatch({ type: "SET_DASHBOARD", payload: await api.getDashboard() });
     dispatch({ type: "SET_LOGIN_NOTICE", payload: true });
     dispatch({ type: "SET_ERROR", payload: "" });
   }

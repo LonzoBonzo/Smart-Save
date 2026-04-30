@@ -11,8 +11,10 @@ import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
+@Transactional(readOnly = true)
 public class TransactionService {
 
     private final TransactionRecordRepository transactionRepository;
@@ -37,6 +39,7 @@ public class TransactionService {
             .toList();
     }
 
+    @Transactional
     public TransactionResponse createTransaction(TransactionRequest request) {
         AppUser currentUser = userContextService.requireCurrentUser();
 
