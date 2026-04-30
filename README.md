@@ -196,7 +196,9 @@ ExchangeRateSnapshot
 | --- | --- | --- |
 | ChatGPT / Codex | Generated scaffolding, security wiring, JPA structure, and React routing/layout | Code was reviewed against milestone requirements and connected to the existing repository layout |
 
-## Notes
+## Notes & Disclaimer 
+
+-There may be data flow issues and duplications upon start up, go to bash and update the marven in order to correct these mistakes.
 
 - The milestone requested React specifically, so the frontend was implemented in React rather than Angular.
 - The backend now uses persistent H2 storage instead of temporary lists.
